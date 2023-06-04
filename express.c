@@ -4,6 +4,50 @@
 #include <sqlite3.h>
 #include <gtk/gtk.h>
 
+// Function declarations
+void initializeDatabase();
+void on_deposit_button_clicked(GtkButton *button, gpointer user_data);
+void on_new_client_button_clicked(GtkButton *button, gpointer user_data);
+void on_dashboard_button_clicked(GtkButton *button, gpointer user_data);
+void on_loan_button_clicked(GtkButton *button, gpointer user_data);
+
+
+int main(int argc, char *argv[]) {
+    // Initialize GTK
+    gtk_init(&argc, &argv);
+
+    // Load the Glade file
+    GtkBuilder *builder = gtk_builder_new();
+    gtk_builder_add_from_file(builder, "express.glade", NULL);
+
+    // Connect the signals
+    GtkWidget *window = GTK_WIDGET(gtk_builder_get_object(builder, "main_window"));
+    gtk_builder_connect_signals(builder, NULL);
+
+    // Get the stack widget and connect button signals
+    GtkStack *stack = GTK_STACK(gtk_builder_get_object(builder, "stack"));
+    GtkWidget *deposit_button = GTK_WIDGET(gtk_builder_get_object(builder, "deposit_button"));
+    GtkWidget *new_client_button = GTK_WIDGET(gtk_builder_get_object(builder, "new_client_button"));
+    GtkWidget *dashboard_button = GTK_WIDGET(gtk_builder_get_object(builder, "dashboard_button"));
+    GtkWidget *loan_button = GTK_WIDGET(gtk_builder_get_object(builder, "loan_button"));
+    g_signal_connect(deposit_button, "clicked", G_CALLBACK(on_deposit_button_clicked), stack);
+    g_signal_connect(new_client_button, "clicked", G_CALLBACK(on_new_client_button_clicked), stack);
+    g_signal_connect(dashboard_button, "clicked", G_CALLBACK(on_dashboard_button_clicked), stack);
+    g_signal_connect(loan_button, "clicked", G_CALLBACK(on_loan_button_clicked), stack);
+
+    // Show the main window
+    gtk_widget_show_all(GTK_WIDGET(window));
+
+    // Start the GTK main loop
+    gtk_main();
+
+    // Free resources
+    g_object_unref(builder);
+
+    return 0;
+}
+
+
 // SQLite database connection
 sqlite3* db;
 
@@ -22,6 +66,7 @@ void initializeDatabase() {
     // Create necessary tables if they don't exist
     char* createDepositsTable = "CREATE TABLE IF NOT EXISTS deposits (id INTEGER PRIMARY KEY, name TEXT, date TEXT, amount REAL, notes TEXT);";
     rc = sqlite3_exec(db, createDepositsTable, 0, 0, 0);
+   
 
     if (rc != SQLITE_OK) {
         fprintf(stderr, "SQL error: %s\n", sqlite3_errmsg(db));
@@ -30,12 +75,29 @@ void initializeDatabase() {
     }
 
     // Add additional create table statements for other data types if needed
+    // Create the loans table
+    char *createLoansTable = "CREATE TABLE IF NOT EXISTS loans (id INTEGER PRIMARY KEY, name TEXT, date TEXT, amount REAL, notes TEXT);";
+    rc = sqlite3_exec(db, createLoansTable, 0, 0, 0);
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Failed to create 'loans' table: %s\n", sqlite3_errmsg(db));
+        return 1;
+    }
+
+    // Create the clients table
+    char *createNewClientsTable = "CREATE TABLE IF NOT EXISTS clients (id INTEGER PRIMARY KEY, name TEXT, address TEXT, contact TEXT);";
+    rc = sqlite3_exec(db, createNewClientsTable, 0, 0, 0);
+    if (rc != SQLITE_OK) {
+        fprintf(stderr, "Failed to create 'clients' table: %s\n", sqlite3_errmsg(db));
+        return 1;
+    }
+
 }
 
 // Function to close the SQLite database connection
 void closeDatabase() {
     sqlite3_close(db);
 }
+
 
 // Function to handle the Deposit form submission
 void handleDepositForm() {
@@ -255,34 +317,16 @@ int main() {
     // You can choose and install the libraries of your choice for UI enhancement
     // Some popular options are: ncurses, GTK+, Qt, SDL, or wxWidgets
 
-    // Main menu and user interface code
-
-int main(int argc, char *argv[]) {
-    // Initialize GTK
-    gtk_init(&argc, &argv);
-
-    // Create a window
-    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(window), "My Application");
-    gtk_window_set_default_size(GTK_WINDOW(window), 300, 200);
-    gtk_window_set_position(GTK_WINDOW(window), GTK_WIN_POS_CENTER);
-    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
-
-    // Display the window
-    gtk_widget_show_all(window);
-
-    // Run the main GTK loop
-    gtk_main();
-
-    return 0;
-}
+    // Main menu and user interface code}
 
     
     // You can modify the code based on the chosen UI library
 
     int option;
     do {
-        printf("\nMain Menu\n");
+        printf("\nExpress Financial Solutions\n");
+	printf("\n-------------------------------\n");
+	printf("\nMain Menu\n");
         printf("1. Deposits\n");
         printf("2. Loans\n");
         printf("3. New Client\n");

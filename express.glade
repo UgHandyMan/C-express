@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.40.0 
+
+The MIT License (MIT)
+
+Copyright (c) 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+-->
+<interface>
+  <requires lib="gtk+" version="3.24"/>
+  <!-- interface-license-type mit -->
+  <object class="GtkLabel">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label" translatable="yes">EXPRESS FINANCIAL SERVICES</property>
+    <property name="justify">center</property>
+    <property name="width-chars">4</property>
+    <property name="max-width-chars">4</property>
+    <attributes>
+      <attribute name="font-desc" value="Algerian Oblique Extra-Condensed 10"/>
+      <attribute name="underline" value="True"/>
+      <attribute name="foreground" value="#1a1a5f5fb4b4"/>
+      <attribute name="background" value="#f6f6f5f5f4f4"/>
+      <attribute name="gravity" value="auto"/>
+      <attribute name="size" value="20000"/>
+    </attributes>
+  </object>
+
+
+     <object class="GtkMenu">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <object class="GtkButton" id="deposit_button">
+    <!-- Other properties -->
+    <signal name="clicked" handler="on_deposit_button_clicked" swapped="no"/>
+</object>
+
+<object class="GtkButton" id="new_client_button">
+    <!-- Other properties -->
+    <signal name="clicked" handler="on_new_client_button_clicked" swapped="no"/>
+</object>
+
+<object class="GtkButton" id="dashboard_button">
+    <!-- Other properties -->
+    <signal name="clicked" handler="on_dashboard_button_clicked" swapped="no"/>
+</object>
+
+<object class="GtkButton" id="loan_button">
+    <!-- Other properties -->
+    <signal name="clicked" handler="on_loan_button_clicked" swapped="no"/>
+</object>
+
+     </object>
+     
+  <!-- Deposit Form -->
+  <object class="GtkGrid" id="deposit">
+    <!-- Add widgets and layout for deposit form here -->
+    <object class="GtkListBoxRow">
+    <child>
+      <object class="GtkBox">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+          <property name="orientation">vertical</property>
+
+            <child>
+             <object class="GtkLabel">
+                 <property name="visible">True</property>
+                 <property name="can-focus">False</property>
+                 <property name="label" translatable="yes">Deposit Form</property>
+              </object>
+          </child>
+
+           <child>
+             <object class="GtkEntry">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <!-- Add other properties and attributes for the entry -->
+              </object>
+           </child>
+
+           <!-- Add more widgets for the deposit form as needed -->
+           <child>
+  <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+    <property name="label" translatable="yes">Enter Name:</property>
+  </object>
+  <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Date: </property>
+  </object>
+  <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Amount: </property>
+  </object>
+</child>
+
+        </object>
+   </child>
+</object>
+
+  </object>
+
+  <!-- Loan Form -->
+  <object class="GtkGrid" id="loan_form">
+    <!-- Add widgets and layout for loan form here -->
+    <object class="GtkListBoxRow">
+  <child>
+    <object class="GtkBox">
+      <property name="visible">True</property>
+      <property name="can-focus">False</property>
+      <property name="orientation">vertical</property>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+          <property name="label" translatable="yes">Loan Form</property>
+        </object>
+      </child>
+
+      <!-- Add other widgets and layout for the loan form -->
+      <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Date: </property>
+  </object>
+  <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Amount: </property>
+  </object>
+  <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Notes: </property>
+  </object>
+
+    </object>
+  </child>
+</object>
+
+  </object>
+
+  <!-- New Client Form -->
+  <object class="GtkGrid" id="new_client_form">
+    <!-- Add widgets and layout for new client form here -->
+    <object class="GtkListBoxRow">
+  <child>
+    <object class="GtkBox">
+      <property name="visible">True</property>
+      <property name="can-focus">False</property>
+      <property name="orientation">vertical</property>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+          <property name="label" translatable="yes">New Client Form</property>
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkEntry">
+          <property name="visible">True</property>
+          <property name="can-focus">True</property>
+          <!-- Add other properties and attributes for the entry -->
+          <object class="GtkListBoxRow">
+  <child>
+    <object class="GtkBox">
+      <property name="visible">True</property>
+      <property name="can-focus">False</property>
+      <property name="orientation">vertical</property>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+          <property name="label" translatable="yes">New Client Form</property>
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkEntry">
+          <property name="visible">True</property>
+          <property name="can-focus">True</property>
+          <!-- Add other properties and attributes for the entry -->
+        </object>
+      </child>
+
+      <!-- Add more widgets for the new client form as needed -->
+       <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Name: </property>
+  </object>
+   <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Address: </property>
+  </object>
+   <object class="GtkEntry">
+    <property name="visible">True</property>
+    <property name="can-focus">True</property>
+    <property name="hexpand">True</property>
+    <property name="placeholder-text">Enter Contact: </property>
+  </object>
+
+    </object>
+  </child>
+</object>
+
+        </object>
+      </child>
+
+      <!-- Add more widgets for the new client form as needed -->
+
+    </object>
+  </child>
+</object>
+
+  </object>
+
+  <!-- Dashboard -->
+  <object class="GtkGrid" id="dashboard">
+    <!-- Add widgets and layout for dashboard here -->
+    <object class="GtkListBoxRow">
+  <child>
+    <object class="GtkBox">
+      <property name="visible">True</property>
+      <property name="can-focus">False</property>
+      <property name="orientation">vertical</property>
+
+      <child>
+        <object class="GtkLabel">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+          <property name="label" translatable="yes">Dashboard</property>
+        </object>
+      </child>
+
+      <!-- Add other widgets and layout for the dashboard -->
+
+    </object>
+  </child>
+</object>
+
+  </object>
+
+  <!-- Main Window -->
+  <object class="GtkWindow" id="main_window">
+    <property name="visible">True</property>
+    <property name="can-focus">False</property>
+
+    <object class="GtkGrid" id="main_grid">
+      <property name="visible">True</property>
+      <property name="can-focus">False</property>
+
+      <child>
+        <object class="GtkMenuBar" id="menu_bar">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+
+          <child>
+            <object class="GtkMenuItem" id="menu_deposits">
+              <property name="visible">True</property>
+              <property name="can-focus">False</property>
+              <property name="label" translatable="yes">Deposits</property>
+              <property name="use-underline">True</property>
+              <signal name="activate" handler="on_menu_deposits_activate" swapped="no"/>
+            </object>
+          </child>
+
+          <child>
+            <object class="GtkMenuItem" id="menu_loans">
+              <property name="visible">True</property>
+              <property name="can-focus">False</property>
+              <property name="label" translatable="yes">Loans</property>
+              <property name="use-underline">True</property>
+              <signal name="activate" handler="on_menu_loans_activate" swapped="no"/>
+            </object>
+          </child>
+
+          <child>
+            <object class="GtkMenuItem" id="menu_new_client">
+              <property name="visible">True</property>
+              <property name="can-focus">False</property>
+              <property name="label" translatable="yes">New Client</property>
+              <property name="use-underline">True</property>
+              <signal name="activate" handler="on_menu_new_client_activate" swapped="no"/>
+            </object>
+          </child>
+
+          <child>
+            <object class="GtkMenuItem" id="menu_dashboard">
+              <property name="visible">True</property>
+              <property name="can-focus">False</property>
+              <property name="label" translatable="yes">Dashboard</property>
+              <property name="use-underline">True</property>
+              <signal name="activate" handler="on_menu_dashboard_activate" swapped="no"/>
+            </object>
+          </child>
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkListBox" id="forms_container">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+
+          <child>
+            <object class="GtkListBoxRow">
+              <child>
+                <placeholder/>
+              </child>
+            </object>
+          </child>
+        </object>
+      </child>
+
+      <child>
+        <object class="GtkLabel" id="footer">
+          <property name="visible">True</property>
+          <property name="can-focus">False</property>
+          <property name="label" translatable="yes">Express Financial Solutions @2023</property>
+          <attributes>
+            <attribute name="font-desc" value="Algerian Oblique Extra-Condensed 10"/>
+            <attribute name="foreground" value="#1a1a5f5fb4b4"/>
+          </attributes>
+        </object>
+      </child>
+    </object>
+  </object>
+</interface>
